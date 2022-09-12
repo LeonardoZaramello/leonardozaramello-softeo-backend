@@ -11,9 +11,9 @@ class UserController {
 
   public async create (req: Request, res:Response): Promise<Response> {
     try {
-      const { userName, service, value, instalment, paymentDay, payed } = req.body
+      const { userName, service, value, instalment, firsPaymentDay, payed } = req.body
 
-      const createdUser = await UserService.createUser(userName, service, value, instalment, paymentDay, payed)
+      const createdUser = await UserService.createUser(userName, service, value, instalment, firsPaymentDay, payed)
 
       return res.json(createdUser)
     } catch (err) {
@@ -24,9 +24,18 @@ class UserController {
   public async delete (req: Request, res:Response): Promise<Response> {
     try {
       const { id } = req.params
-      console.log(id)
 
       const deletedUser = await UserService.deleteUser(id)
+
+      return res.json(deletedUser)
+    } catch (err) {
+      return res.json(err)
+    }
+  }
+
+  public async deleteAllUsers (req: Request, res:Response): Promise<Response> {
+    try {
+      const deletedUser = await UserService.deleteAllUsers()
 
       return res.json(deletedUser)
     } catch (err) {

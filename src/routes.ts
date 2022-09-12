@@ -6,5 +6,6 @@ const routes = Router()
 routes.get('/users', UserController.findAll)
 routes.post('/users', UserController.create)
 routes.delete('/users/:id', UserController.delete)
+routes.delete('/usersDeleteAll', UserController.deleteAllUsers)
 
 export default routes

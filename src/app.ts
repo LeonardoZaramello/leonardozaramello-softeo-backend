@@ -1,7 +1,6 @@
 import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
-import handleError from '../src/middlewares/handleError'
 import routes from './routes'
 import * as dotenv from 'dotenv'
 
@@ -19,7 +18,6 @@ class App {
   private middlewares () {
     this.express.use(express.json())
     this.express.use(cors())
-    this.express.use(handleError)
   }
 
   private database () {
