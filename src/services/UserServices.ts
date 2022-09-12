@@ -10,7 +10,7 @@ class UserService {
       const instalmentBody = {
         number: index,
         value: valueFix,
-        paymentDay: index === 1 ? firstPaymentDayFix : addDays(firstPaymentDayFix, 30 * index),
+        paymentDay: index === 1 ? firstPaymentDayFix : addDays(firstPaymentDayFix, 30 * index - 1),
         payed: index === 1 ? payed : false
       }
       listOfPayments.push(instalmentBody)
