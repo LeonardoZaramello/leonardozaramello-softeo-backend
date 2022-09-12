@@ -39,8 +39,7 @@ class UserService {
       const user = await User.create(userBody)
       return user
     } catch (error) {
-      // eslint-disable-next-line dot-notation
-      return Object.values(error.errors)[0]['message']
+      return error
     }
   }
 
@@ -54,8 +53,7 @@ class UserService {
       await User.deleteOne({ _id: id })
       return `Cliente ${foundUser.userName} removido do sistema`
     } catch (error) {
-      // eslint-disable-next-line dot-notation
-      return Object.values(error.errors)[0]['message']
+      return error
     }
   }
 
@@ -65,8 +63,7 @@ class UserService {
 
       return 'Todos os usuários foram removidos'
     } catch (error) {
-      // eslint-disable-next-line dot-notation
-      return Object.values(error.errors)[0]['message']
+      return error
     }
   }
 }
