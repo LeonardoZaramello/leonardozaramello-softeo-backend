@@ -1,10 +1,6 @@
-import express from 'express'
 import app from './app'
+import dotenv from 'dotenv'
+dotenv.config()
+const PORT = process.env.PORT || 3003
 
-const port = process.env.PORT || 3001
-
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'))
-}
-
-app.listen(port, () => console.log(`Server initialized in port: ${port}`))
+app.listen(PORT, () => console.log(`Server initialized in port: ${PORT}`))
