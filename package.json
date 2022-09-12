@@ -8,7 +8,7 @@
   },
   "scripts": {
     "tsc": "tsc",
-    "start:prod": "ts-node dist/server.js",
+    "start:prod": "node dist/server.js",
     "heroku-postbuild":"npm run tsc && npm run start:prod",
     "start": "ts-node ./src/server.ts",
     "dev": "nodemon src/server.ts"
