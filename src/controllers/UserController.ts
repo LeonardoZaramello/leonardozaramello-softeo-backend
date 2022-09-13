@@ -35,9 +35,20 @@ class UserController {
 
   public async deleteAllUsers (req: Request, res:Response): Promise<Response> {
     try {
-      const deletedUser = await UserService.deleteAllUsers()
+      const deletedAll = await UserService.deleteAllUsers()
 
-      return res.json(deletedUser)
+      return res.json(deletedAll)
+    } catch (err) {
+      return res.json(err)
+    }
+  }
+
+  public async deleteInstalment (req: Request, res:Response): Promise<Response> {
+    try {
+      const { id, instalment } = req.params
+      const deletedInstalment = await UserService.deleteInstalment(id, instalment)
+
+      return res.json(deletedInstalment)
     } catch (err) {
       return res.json(err)
     }

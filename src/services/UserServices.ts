@@ -66,6 +66,16 @@ class UserService {
       return error
     }
   }
+
+  public async deleteInstalment (id: string, _instalment: string) {
+    try {
+      await User.deleteMany({ _id: id })
+
+      return 'Todos os usuários foram removidos'
+    } catch (error) {
+      return error
+    }
+  }
 }
 
 export default new UserService()
