@@ -9,7 +9,7 @@ class UserService {
     for (let index = 1; index <= instalment; index += 1) {
       const instalmentBody = {
         number: index,
-        value: valueFix,
+        value: parseFloat(valueFix),
         paymentDay: addDays(firstPaymentDayFix, 30 * (index - 1)),
         payed: index === 1 ? payed : false
       }
