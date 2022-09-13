@@ -11,9 +11,9 @@ class UserController {
 
   public async create (req: Request, res:Response): Promise<Response> {
     try {
-      const { userName, service, value, instalment, firsPaymentDay, payed } = req.body
+      const { userName, email, service, value, instalment, firsPaymentDay, payed } = req.body
 
-      const createdUser = await UserService.createUser(userName, service, value, instalment, firsPaymentDay, payed)
+      const createdUser = await UserService.createUser(userName, email, service, value, instalment, firsPaymentDay, payed)
 
       return res.json(createdUser)
     } catch (err) {

@@ -10,7 +10,7 @@ class UserService {
       const instalmentBody = {
         number: index,
         value: valueFix,
-        paymentDay: addDays(firstPaymentDayFix, 30 * index - 1),
+        paymentDay: addDays(firstPaymentDayFix, 30 * (index - 1)),
         payed: index === 1 ? payed : false
       }
       listOfPayments.push(instalmentBody)
@@ -21,13 +21,14 @@ class UserService {
     return listOfPayments
   }
 
-  public async createUser (userName: string, service: string, value: number, instalment: number, firsPaymentDay: Date, payed: boolean) {
+  public async createUser (userName: string, email: string, service: string, value: number, instalment: number, firsPaymentDay: Date, payed: boolean) {
     try {
       const firstPaymentDayFix = new Date(firsPaymentDay)
       const instalmentInfos = this.getInstalments(value, instalment, firstPaymentDayFix, payed)
 
       const userBody = {
         userName,
+        email,
         service,
         value,
         instalment,

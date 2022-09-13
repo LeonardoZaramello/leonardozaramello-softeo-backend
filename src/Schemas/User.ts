@@ -2,6 +2,7 @@ import { Schema, model } from 'mongoose'
 
 const UserSchema = new Schema({
   userName: { type: String, required: [true, 'Nome de cliente inválido'], minlength: [3, 'Mínimo de 3 letras no Nome do Cliente'] },
+  email: { type: String, required: [true, 'Nome de email inválido'], minlength: [3, 'Mínimo de 3 letras no Email do Cliente'] },
   service: { type: String, required: [true, 'Nome do serviço inválido'] },
   value: { type: Number, required: [true, 'Valor do serviço inválido'], cast: 'Informe um número no valor do serviço' },
   instalment: { type: Number, required: [true, 'Parcelamento inválido'], cast: 'Informe um número nas parcelas' },
