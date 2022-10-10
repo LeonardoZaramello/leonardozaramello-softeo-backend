@@ -22,7 +22,7 @@ class App {
 
   private database () {
     dotenv.config()
-    mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/Softeobd')
+    mongoose.connect('mongodb://localhost:27017/Softeobd' || process.env.MONGODB_URI)
   }
 
   private routes () {

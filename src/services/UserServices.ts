@@ -4,19 +4,17 @@ import { addDays } from 'date-fns'
 class UserService {
   private getInstalments (value: number, instalment: number, firstPaymentDayFix: Date, payed: boolean) {
     const listOfPayments = []
-    const valueFix = (value / instalment).toFixed(2)
+    const valueFix = Math.round(value / instalment * 100) / 100
 
     for (let index = 1; index <= instalment; index += 1) {
       const instalmentBody = {
         number: index,
-        value: parseFloat(valueFix),
+        value: valueFix,
         paymentDay: addDays(firstPaymentDayFix, 30 * (index - 1)),
         payed: index === 1 ? payed : false
       }
       listOfPayments.push(instalmentBody)
     }
-
-    console.log(listOfPayments)
 
     return listOfPayments
   }
