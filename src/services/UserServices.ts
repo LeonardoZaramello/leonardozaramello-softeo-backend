@@ -2,16 +2,20 @@ import User from '../Schemas/User'
 import { addDays } from 'date-fns'
 
 class UserService {
+  private fixValues (value: number) {
+    return Math.round(value * 100) / 100
+  }
+
   private getInstalments (value: number, instalment: number, firstPaymentDayFix: Date, payed: boolean) {
     const listOfPayments = []
-    const valueFix = Math.round((value / instalment) * 100) / 100
+    const valueFix = this.fixValues(value / instalment)
     let instalmentSums = 0
 
     for (let index = 1; index <= instalment; index += 1) {
       if (index === instalment) {
         const instalmentBody = {
           number: index,
-          value: Math.round((value - instalmentSums) * 100) / 100,
+          value: this.fixValues(value - instalmentSums),
           paymentDay: addDays(firstPaymentDayFix, 30 * (index - 1)),
           payed: index === 1 ? payed : false
         }
